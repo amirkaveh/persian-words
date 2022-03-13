@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mount/data:/data/db
+      - ./mount/secrets:/run/secrets
+    environment:
+      MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/user
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/pass
